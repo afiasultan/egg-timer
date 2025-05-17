@@ -1,0 +1,31 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Egg-Timer</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div>
+    Time left = <span id="timer">00:00</span>
+  </div>
+
+  <!-- Preset selectors -->
+  <div>
+    <button data-minutes="3">3 Minutes</button>
+    <button data-minutes="5">5 Minutes</button>
+    <button data-minutes="7">7 Minutes</button>
+    <button data-minutes="10">10 Minutes</button>
+  </div>
+
+  <!-- Controls -->
+  <div>
+    <button id="start">Start</button>
+    <button id="pause">Pause</button>
+    <button id="resume">Resume</button>
+    <button id="reset">Reset</button>
+  </div>
+</body>
+</html>
