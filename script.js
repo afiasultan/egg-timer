@@ -20,22 +20,25 @@ function setTimer(minutes) {
 
 // Start or resume the countdown
 function startTimer() {
-  if (timerInterval !== null) return; // already running
-  playTick();
-
-  timerInterval = setInterval(() => {
-    remainingSeconds--;
-    if (remainingSeconds < 0) {
-      clearInterval(timerInterval);
-      timerInterval = null;
-      stopTick();
-      document.getElementById('timer').textContent = "Time's up!";
-      playDing();
-      return;
-    }
-    document.getElementById('timer').textContent = formatTime(remainingSeconds);
-  }, 1000);
-}
+    if (timerInterval !== null) return;
+    if (remainingSeconds <= 0) return; // prevent starting at 00:00
+  
+    playTick();
+    document.getElementById('start').disabled = true; // disable start
+  
+    timerInterval = setInterval(() => {
+      remainingSeconds--;
+      if (remainingSeconds < 0) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        stopTick();
+        document.getElementById('timer').textContent = "Time's up!";
+        playDing();
+        return;
+      }
+      document.getElementById('timer').textContent = formatTime(remainingSeconds);
+    }, 1000);
+}  
 
 // Pause the timer
 function pauseTimer() {
@@ -46,12 +49,14 @@ function pauseTimer() {
 
 // Reset everything
 function resetTimer() {
-  clearInterval(timerInterval);
-  timerInterval = null;
-  remainingSeconds = 0;
-  stopTick();
-  document.getElementById('timer').textContent = "00:00";
-}
+    clearInterval(timerInterval);
+    timerInterval = null;
+    remainingSeconds = 0;
+    stopTick();
+    document.getElementById('timer').textContent = "00:00";
+    document.getElementById('start').disabled = true; // disable start
+  }
+  
 
 // Tick and ding helpers
 function playTick() {
