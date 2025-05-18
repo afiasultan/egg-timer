@@ -1,10 +1,190 @@
-body{
-    background-color:#FEF3E2;
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: #FFF9F0;
+  font-family: 'Press Start 2P', monospace;
+  overflow: hidden;
+  color: #333;
+}
+
+.main-container {
+    padding: 1rem 1rem;
   }
   
-  div{
-    background-color:#419D78;
-    color:#EFD0CA;
-    font-size:20px;
-    text-align:center;
+
+/* === Shared Layout === */
+.content, .main-container {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  animation: fadeIn 1.2s ease-out forwards;
+}
+  
+
+/* === Egg Image === */
+.logo-egg, .main-egg {
+  width: 300px;
+  height: auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  margin-bottom: 0.5rem;
+  animation: bob 2s ease-in-out infinite;
+}
+
+/* === Title (Only used in index.html) === */
+.title {
+  font-size: 1.5rem;
+  color: #F29339;
+  text-shadow: 2px 2px #FFE5A7;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: popIn 1s 0.5s forwards;
+}
+
+/* === Start Button (index.html) === */
+.start-button {
+  font-family: 'Press Start 2P', monospace;
+  background: linear-gradient(145deg, #FDE68A 0%, #FDBA74 100%);
+  color: #FFFFFF;
+  border: 4px solid #FBCB9E;
+  padding: 1rem 1.5rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #FBCB9E;
+  transform: translateY(40px);
+  opacity: 0;
+  animation: slideUp 1s 1s forwards;
+  transition: transform 0.2s ease;
+}
+
+.start-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(145deg, #FFF59D 0%, #FCD299 100%);
+  color: #333333;
+}
+
+/* === Timer Display Box (main.html) === */
+.timer-box {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  background: #FFF3CD;
+  display: inline-block;
+  padding: 1rem 2rem;
+  border: 4px solid #FDBA74;
+  color: #F29339;
+  box-shadow: 4px 4px 0 #FBCB9E;
+  animation: popIn 0.8s ease-out;
+}
+
+/* === Button Group (main.html) === */
+.button-group {
+  margin: 1.5rem 0;
+}
+
+/* === Buttons (shared) === */
+button {
+  font-family: 'Press Start 2P', monospace;
+  background: linear-gradient(145deg, #FDE68A 0%, #FDBA74 100%);
+  color: #ffffff;
+  border: 4px solid #FBCB9E;
+  padding: 1rem 1.2rem;
+  margin: 0.4rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #FBCB9E;
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  background: linear-gradient(145deg, #FFF59D 0%, #FCD299 100%);
+  color: #333333;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.98);
+  box-shadow: 2px 2px 0 #FBCB9E;
+}
+
+/* === Floating Mini Eggs - UPGRADED === */
+.floating-eggs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
   }
+  
+  .mini-egg {
+    position: absolute;
+    width: 32px;
+    height: 40px;
+    background-color: #fff;
+    border: 2px solid #FBCB9E;
+    border-radius: 50% 50% 60% 60%;
+    box-shadow: inset 0 0 0 1px #FFF9F0;
+    animation: floatSpin 5s ease-in-out infinite;
+    opacity: 0.8;
+  }
+  
+  /* Yolk */
+  .mini-egg::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 12px;
+    height: 12px;
+    background-color: #FCD34D;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px #FACC15;
+  }
+  
+  /* Float + rotate animation */
+  @keyframes floatSpin {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0.85;
+    }
+    50% {
+      transform: translateY(-10px) rotate(2deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0) rotate(-2deg);
+      opacity: 0.85;
+    }
+  }  
+
+/* === Animations === */
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); opacity: 0.8; }
+  50% { transform: translateY(-6px); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(0.95) translate(-50%, -50%); }
+  100% { opacity: 1; transform: scale(1) translate(-50%, -50%); }
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

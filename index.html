@@ -2,16 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Egg-Timer</title>
-  <link rel="stylesheet" href="styles.css">
-  
+  <title>Egg Timer</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  
-    <div>
-        <button onclick="window.location.href='main.html'">Start!</button>
-    </div>
+  <div class="floating-eggs">
+    <!-- Mini pixel eggs floating in background -->
+    <div class="mini-egg" style="top: 5%; left: 10%;"></div>
+    <div class="mini-egg" style="top: 15%; left: 80%;"></div>
+    <div class="mini-egg" style="top: 30%; left: 40%;"></div>
+    <div class="mini-egg" style="top: 50%; left: 15%;"></div>
+    <div class="mini-egg" style="top: 60%; left: 75%;"></div>
+    <div class="mini-egg" style="top: 70%; left: 30%;"></div>
+    <div class="mini-egg" style="top: 85%; left: 60%;"></div>
+    <div class="mini-egg" style="top: 90%; left: 5%;"></div>
+  </div>
 
+  <div class="content">
+    <img src="pixel-egg.png" alt="Egg" class="logo-egg" />
+    <h1 class="title">Egg Timer</h1>
+    <a href="main.html">
+      <button type="button" class="start-button">START!</button>
+    </a>
   </div>
 </body>
 </html>
